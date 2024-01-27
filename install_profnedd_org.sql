@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
@@ -16,12 +17,11 @@
 -- Database Creation and Use:
 --
 -- Drop Database
-
+DROP Database IF EXISTS guttman_classdb_assign1;
 -- Create database
-
+Create DATABASE IF NOT EXISTS guttman_classdb_assign1 CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 -- Use database
-
-
+USE guttman_classdb_assign1;
 -- Begin populating database
 
 -- --------------------------------------------------------
