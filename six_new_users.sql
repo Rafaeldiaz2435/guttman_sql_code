@@ -216,3 +216,4 @@ role all to  'admin_001'@'%', 'admin_002'@'%',
 
 -- create roles
 select 'script done' as 'installation progressing';
+ 

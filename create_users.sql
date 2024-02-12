@@ -51,10 +51,10 @@ flush privileges;
 select user, host, show_db_priv, account_locked
 from mysql.user;
 
-select 'dropping user admin_007' as 'installation started'
+select 'dropping user admin_007' as 'installation started';
 
 drop user
-if exists 'admin_007'@'%'
+if exists 'admin_007'@'%';
 
 select 'adding user admin_007' as 'installation progressing';
 create user
@@ -67,7 +67,7 @@ password history 5
 password reuse interval 365 day;
 
 
-revoke all, grant option from 'admin_007'@'%'
+revoke all, grant option from 'admin_007'@'%';
 
 select user, show_db_priv, account_locked
 from mysql.user;
