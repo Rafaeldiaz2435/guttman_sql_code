@@ -111,7 +111,7 @@ with
 -- set resource limits
 max_queries_per_hour 20
 max_updates_per_hour 10
-max_connections_per_hour 5
+max_connections_per_hour 500
 max_user_connections 2
 -- set password options
 failed_login_attempts 4
@@ -216,4 +216,3 @@ role all to  'admin_001'@'%', 'admin_002'@'%',
 
 -- create roles
 select 'script done' as 'installation progressing';
- 

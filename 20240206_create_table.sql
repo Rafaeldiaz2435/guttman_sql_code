@@ -15,7 +15,7 @@ create database if not exists guttman_202db_assiagn5
   -- create tables
   drop table
   if exists
-  'vendor';
+  `vendor`;
 
 create table
 if not exists vendor ( vendorId char(2) not null,
@@ -26,7 +26,7 @@ show create table vendor \G
 
 drop table
 if exists
-'category';
+`category`;
 
 create table
   if not exists category (  categoryId char(2) not null,
@@ -37,7 +37,7 @@ show create table category \G
 
 drop table
 if exists
-'product';
+`product`;
 
 create table
   if not exists product (     productId     char(3) not null,
@@ -47,14 +47,14 @@ create table
                               categoryId    char(2) not null,
                                             primary key (productId),
                                             foreign key (vendorId)
-                                            references vendor(vendorId)
+                                            references vendor(vendorId),
                                             foreign key (categoryId)
-                                            references category(categoryId)  ):
+                                           references category(categoryId)   ) ;
 show create table product \G
 
 drop table
 if exists
-'region';
+`region`;
 
 create table
   if not exists region (      regionId    char not null,
@@ -65,13 +65,13 @@ create table
 show create table region \G
 drop table
 if exists
-'store';
+`store`;
 
 create table
   if not exists store (     storeId    varchar(3) not null,
                             storeZip   char(5) not null,
                             regionId   char not null,
-                                       primary key (storeId)
+                                       primary key (storeId),
                                        foreign key (regionId)
                                        references region(regionId)
 );
@@ -79,41 +79,41 @@ show create table store \G
 
 drop table
 if exists
-'customer';
+`customer`;
 
 
 create table
-  if not exists customer (    customerId    char(7) not null,
+  if not exists customer (    customerid    char(7) not null,
                               customerName  varchar(15) not null,
                               customerZip   char(5) not null,
                                             primary key (customerId)
 );
-show crate table customer \G
+show create table customer \G
 
 drop table
 if exists
-'salestransaction';
+`salestransaction`;
 create table
   if not exists salestransaction (  tid    varchar(8) not null,
                                     customerId char(7) not null,
                                     storeId  varchar(3) not null,
-                                    tdate   date not null
+                                    tdate   date not null,
                                             primary key (tid),
                                             foreign key (customerId)
-                                            references customer(customerId)
+                                            references customer(customerId),
                                             foreign key (storeId)
                                             references  store(storeId)
 );
 show create table salestransaction \G
 drop table
 if exists
-'soldvia';
+`soldvia`;
 
 create table
   if not exists soldvia (       productId   char(3) not null,
                                 tid         varchar(8) not null,
                                 noofitems   int not null,
-                                            primary key (productId, tid)
+                                            primary key (productId, tid),
                                             foreign key (productId)
                                             references product(productId),
                                             foreign key (tid)
@@ -121,7 +121,7 @@ create table
 );
 show create table soldvia \G
 
-select '' as ;'inserting values into table' \G
+select '' as 'inserting values into table' \G
 
 insert into vendor values ('pg', 'pacifica gear');
 insert into vendor values ('mk', 'mountain king');
@@ -143,6 +143,8 @@ insert into region values ('t','tristate');
 insert into store values ('s1','60600','c');
 insert into store values ('s2','60605','c');
 insert into store values ('s3','35400','t');
+insert into store values ('s4', '68419','t');
+insert into store values ('s5', '12345','t');
 
 insert into customer values ('1-2-333','tina','60137');
 insert into customer values ('2-3-444','tony','60611');
